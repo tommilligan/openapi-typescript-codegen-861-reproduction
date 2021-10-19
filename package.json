@@ -1,0 +1,13 @@
+{
+  "name": "ts-openapi-repro",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "gen": "openapi --input schema.yaml --output output"
+  },
+  "dependencies": {
+    "openapi-typescript-codegen": "^0.10.0",
+    "typescript": "^4.4.4"
+  }
+}

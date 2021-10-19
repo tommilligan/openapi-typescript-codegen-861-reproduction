@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  title: animal-enum-repro
+  version: 79e3e485f2aa03f2
+paths:
+  /_private/animals/single:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetSingleAnimalResponse"
+  /_private/animals/all:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetAllAnimalsResponse"
+  /_private/animals/nested:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetNestedAnimalResponse"
+components:
+  schemas:
+    GetSingleAnimalResponse: &id037
+      type: object
+      required:
+        - animal
+      properties:
+        animal: &id039
+          type: object
+          required:
+            - type
+          properties:
+            type:
+              type: enum
+              enum:
+                - frog
+                - badger
+
+    GetAllAnimalsResponse: &id040
+      type: object
+      required:
+        - animals
+      properties:
+        animals:
+          type: array
+          items: *id039
+    GetNestedAnimalResponse: &id040
+      type: object
+      required:
+        - nested
+      properties:
+        nested:
+          type: object
+          required:
+            - animal
+          properties:
+            animal: *id039
